@@ -9,7 +9,7 @@
     "passport-local": "^1.0.0"
   },
   "name": "yoauth",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "index.js",
   "directories": {
     "lib": "lib"
@@ -21,7 +21,7 @@
   "scripts": {
     "serve": "nodemon tests/serve.js"
   },
-  "keywords": [],
+  "keywords": ["auth", "express", "passport", "hbs"],
   "author": "Sawyer",
   "license": "MIT",
   "description": "An easy to use authentication system that can easily be built in to your Express + HBS web apps."
