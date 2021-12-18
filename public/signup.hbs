@@ -13,7 +13,7 @@
         }
 
         .continue {
-            background: {{button_background}} !important
+            background: {{buttonBackground}} !important
         }
         /
     </style>
@@ -38,10 +38,12 @@
                     {{#if errorMessage}}
                         <p class="err">{{errorMessage}}</p>
                     {{/if}}
-                    <label>Full Name</label>
-                    <input name="fullname" type="text" placeholder="John Doe"/>
                     <label>Email</label>
                     <input name="email" type="email" placeholder="johndoe@gmail.com"/>
+                    {{#each signupCustomFields}}
+                        <label>{{this.label}}</label>
+                        <input name="{{this.name}}" type="{{this.type}}" placeholder="{{this.placeholder}}"/>
+                    {{/each}}
                     <label>Password</label>
                     <input name="password" type="password" placeholder="••••••••••">
                     <a class="btn continue" onclick="document.getElementsByTagName('FORM')[0].submit();">
