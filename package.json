@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "hbs": "^4.2.0",
+    "mongoose": "^6.1.2",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0"
+  },
+  "name": "yoauth",
+  "version": "0.1.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "serve": "nodemon tests/serve.js"
+  },
+  "keywords": [],
+  "author": "Sawyer",
+  "license": "MIT",
+  "description": "An easy to use authentication system that can easily be built in to your Express + HBS web apps."
+}

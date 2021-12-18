@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+a {
+    color:#000;
+    text-decoration: none;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
+}
+
+.box {
+    display: flex;
+    width: 30vw;
+    flex-direction: column;
+}
+
+.selections {
+    display: flex;
+    flex-direction: row;
+}
+
+.selector {
+    flex: 1;
+    padding:2%;
+    background:#fff;
+    border:6px solid #000;
+    text-align: center;
+    font-weight: 800;
+    cursor: pointer;
+    transition:0.2s background;
+}
+
+.selector.signup {
+    border-right: 3px solid #000;
+    border-radius: 10px 0 0 0;
+}
+
+.selector.login {
+    border-left: 3px solid #000;
+    border-radius: 0 10px 0 0;
+}
+
+.selector.active {
+    border-bottom: none;
+}
+
+.selector:not(.active) {
+    background: #ffffff50;
+}
+
+.selector:not(.active):hover {
+    background: #ffffff80;
+}
+
+.main {
+    display: flex;
+    background :#fff;
+    border: 6px solid #000;
+    border-radius: 0px 0px 10px 10px;
+    border-top: none;
+    padding: 2%;
+    flex-wrap: wrap;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex-basis: 100%;
+}
+
+.btn {
+    background: #fff;
+    border: 6px solid #000;
+    border-radius: 10px;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    flex-basis: 100%;
+    font-weight: 800;
+    cursor: pointer;
+    margin: 1% 0 1% 0;
+    transition:0.2s background;
+}
+
+.btn img {
+    max-height: 30px;
+    max-width: 30px;
+    height: 30px;
+    justify-self: center;
+    align-self: center;
+    display: flex;
+}
+.btn span {
+    flex: 9;
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+}
+.btn:hover {
+    background:#f0f0f0;
+}
+
+.err {
+    flex-basis: 100%;
+    font-weight: 800;
+    margin: 1% 0 1% 0;
+    background: tomato;
+    border-radius: 10px;
+    padding: 1%;
+    text-align: center;
+    border: 6px solid #000;
+}
+
+label {
+    flex-basis: 100%;
+    font-weight: 800;
+    margin: 1% 0 1% 0;
+    cursor:text;
+}
+
+input {
+    flex-basis: 100%;
+    background: #E3E3E3;
+    padding: 2%;
+    border: none;
+    border-radius: 10px;
+    margin: 1% 0 1% 0;
+    border: 6px solid #E3E3E3;
+    font-weight: 800;
+}
+
+input:active, input:hover, input:focus {
+    outline: none;
+}
+
+@media only screen and (max-height: 500px) {
+    .flex-container {
+        height: initial;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .box {
+        width: 50vw;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .box {
+        width: 70vw;
+    }
+}
