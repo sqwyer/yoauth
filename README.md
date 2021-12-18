@@ -21,6 +21,7 @@ Hello, {{user.fullName}}
 // auth.js
 require('dotenv').config();
 
+const {YoAuth} = require('yoauth');
 const mongoose = require('mongoose');
 
 const auth = new YoAuth({
@@ -57,9 +58,6 @@ module.exports = auth;
 
 ```js
 // index.js
-
-const {YoAuth} = require('yoauth');
-
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
