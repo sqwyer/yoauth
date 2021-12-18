@@ -19,6 +19,8 @@ Hello, {{user.fullName}}
 
 ```js
 // auth.js
+require('dotenv').config();
+
 const mongoose = require('mongoose');
 
 const auth = new YoAuth({
@@ -55,7 +57,6 @@ module.exports = auth;
 
 ```js
 // index.js
-require('dotenv').config();
 
 const {YoAuth} = require('yoauth');
 
