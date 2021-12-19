@@ -7,6 +7,7 @@
 
 body {
     font-family: 'Open Sans', sans-serif;
+    background: #F78D91;
 }
 
 a {
@@ -114,6 +115,10 @@ form {
     background:#f0f0f0;
 }
 
+.continue {
+    background: #4285F4!important;
+}
+
 .err {
     flex-basis: 100%;
     font-weight: 800;
@@ -153,6 +158,12 @@ input:active, input:hover, input:focus {
     }
 }
 
+@media only screen and (max-width: 1300px) {
+    .box {
+        width: 40vw;
+    }
+}
+
 @media only screen and (max-width: 1100px) {
     .box {
         width: 50vw;
@@ -162,5 +173,11 @@ input:active, input:hover, input:focus {
 @media only screen and (max-width: 800px) {
     .box {
         width: 70vw;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .box {
+        width: 90vw;
     }
 }

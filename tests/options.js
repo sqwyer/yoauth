@@ -6,14 +6,18 @@ const options = {
     sessionSecret: 'tacocat',
     background: 'linear-gradient(115deg, rgba(247,141,145,1) 0%, rgba(66,189,210,1) 100%)',
     usernameField: "email",
-    userModel: mongoose.model("User", new mongoose.Schema({
-        email: String,
-        fullname: String,
-        age: Number,
-        password: String
-    }, {
-        timestamps: true
-    })),
+    userModel: {
+        name: "user",
+        schema: new mongoose.Schema({
+            email: String,
+            fullname: String,
+            age: Number,
+            password: String,
+        }, {
+            timestamps: true
+        }),
+        args: []
+    },
     signupCustomFields: [
         {
             label: "Full Name",

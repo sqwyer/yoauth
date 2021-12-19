@@ -7,7 +7,6 @@ const app = express();
 const auth = new YoAuth(options);
 
 auth.configureServer(app, {
-    auth,
     path: '/auth'
 });
 
