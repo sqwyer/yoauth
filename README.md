@@ -31,14 +31,14 @@ const auth = new YoAuth({
     usernameField: "email",
     userModel: {
         name: 'user',
-        schema: mongoose.model("User", new mongoose.Schema({
+        schema: new mongoose.Schema({
             email: String,
             fullname: String,
             age: Number,
             password: String
         }, {
             timestamps: true
-        })),
+        }),
         args: []
     },
     signupCustomFields: [
