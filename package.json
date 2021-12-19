@@ -9,7 +9,7 @@
     "passport-local": "^1.0.0"
   },
   "name": "yoauth",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "main": "index.js",
   "directories": {
     "lib": "lib"
