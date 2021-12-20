@@ -3,7 +3,7 @@ An easy to use authentication system that can easily be built in to your Express
 
 ### Installation
 ```
-  npm i yoauth --save
+npm i yoauth --save
 ```
 
 ### Example
@@ -90,4 +90,4 @@ app.listen(3000, e => {
 You can now visit `http://localhost:3000/auth/signup` to register!
 
 -----------
-**LICENSED UNDER THE MIT OPEN SOURCE LICENSE**
+**Licensed under the MIT Open Source license.**
