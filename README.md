@@ -1,9 +1,10 @@
 # yoAuth
 An easy to use authentication system that can easily be built in to your Express + HBS web apps. Currently only supports local authentication, however will hopefully support Google/Apple/Facebook/etc auth in the future.
 
-> ```
-> npm i yoauth --save
-> ```
+### Installation
+```
+  npm i yoauth --save
+```
 
 ### Example
 ```env
@@ -87,3 +88,6 @@ app.listen(3000, e => {
 ```
 
 You can now visit `http://localhost:3000/auth/signup` to register!
+
+-----------
+**LICENSED UNDER THE MIT OPEN SOURCE LICENSE**
