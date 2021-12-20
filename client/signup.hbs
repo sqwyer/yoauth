@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{options.path}}/static/style.css">
+    <title>Signup</title>
+
+    <style>
+        body {
+            background: {{options.background}};
+        }
+        .continue, .continue:hover {
+            background: {{options.buttonBackground}};
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="box">
+            <div class="selections">
+                <a class="selector signup active" href="#">Sign up</a>
+                <a class="selector login" href="{{options.path}}/login">Login</a>
+            </div>
+            <div class="main">
+                {{!-- <a class="btn" href="#">
+                    <img src="{{path}}/static/google.svg"/>
+                    <span>Sign up with Google</span>
+                </a>
+                <a class="btn" href="#">
+                    <img src="{{path}}/static/apple.svg"/>
+                    <span>Sign up with Apple</span>
+                </a> --}}
+                <form action="{{options.path}}/signup" method="POST">
+                    {{#if errorMessage}}
+                        <p class="err">{{errorMessage}}</p>
+                    {{/if}}
+                    <label>Email</label>
+                    <input name="email" type="email" placeholder="johndoe@gmail.com"/>
+                    {{#each options.signupCustomFields}}
+                        <label>{{this.label}}</label>
+                        <input name="{{this.name}}" type="{{this.type}}" placeholder="{{this.placeholder}}"/>
+                    {{/each}}
+                    <label>Password</label>
+                    <input name="password" type="password" placeholder="••••••••••">
+                    <a class="btn continue" onclick="document.getElementsByTagName('FORM')[0].submit();">
+                        Continue
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/express-session": "^1.17.4",
+    "@types/node": "^17.0.1",
+    "@types/passport": "^1.0.7",
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.15"
+  },
+  "name": "yoauth",
+  "version": "0.4.0",
+  "main": "dist/client.js",
+  "scripts": {
+    "serve": "nodemon tests/index.js"
+  },
+  "keywords": [
+    "auth",
+    "express",
+    "passport",
+    "hbs"
+  ],
+  "author": "Sawyer",
+  "repository": "https://github.com/yoauth/yoauth",
+  "license": "MIT",
+  "description": "An easy to use authentication system that can easily be built in to your Express + HBS web apps.",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.2",
+    "express-session": "^1.17.2",
+    "hbs": "^4.2.0",
+    "mongoose": "^6.1.2",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0"
+  }
+}
