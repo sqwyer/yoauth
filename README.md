@@ -33,7 +33,7 @@ const auth = new YoAuth({
     mongoUri: process.env.MONGO_URI,
     sessionSecret: process.env.SESSION_SECRET,
     background: 'linear-gradient(115deg, rgba(247,141,145,1) 0%, rgba(66,189,210,1) 100%)',
-    usernameField: "email",
+    usernameField: 'email',
     userModel: {
         name: 'user',
         schema: new mongoose.Schema({
@@ -48,18 +48,19 @@ const auth = new YoAuth({
     },
     signupCustomFields: [
         {
-            label: "Full Name",
-            name: "fullname",
-            type: "string",
-            placeholder: "John Doe"
+            label: 'Full Name',
+            name: 'fullname',
+            type: 'string',
+            placeholder: 'John Doe'
         },
         {
-            label: "Age",
-            name: "age",
-            type: "number",
-            placeholder: "Age"
+            label: 'Age',
+            name: 'age',
+            type: 'number',
+            placeholder: 'Age'
         }
-    ]
+    ],
+    path: '/auth'
 });
 
 module.exports = auth;
@@ -72,9 +73,7 @@ const app = express();
 
 const auth = require('./auth');
 
-auth.configureServer(app, {
-    path: '/auth'
-});
+auth.configureServer(app);
 
 app.set('view engine', 'hbs');
 app.get('/', auth.ensureAuth, function(req, res, next) {
