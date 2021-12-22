@@ -100,3 +100,6 @@ An easy to use authentication system that can easily be built in to your Express
             - `auth`: yoauth.Client
             - `passport`: passport
     - **Default:** [See src/local/login.ts](https://github.com/yoauth/yoauth/blob/main/src/auth/local/login.ts)
+
+-------
+**Licensed under the MIT license.**
