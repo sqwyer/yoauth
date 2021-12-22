@@ -1,92 +1,102 @@
 # yoAuth
 An easy to use authentication system that can easily be built in to your Express + HBS web apps. Currently only supports local authentication, however will hopefully support Google/Apple/Facebook/etc auth in the future.
 
-### Installation
-```
-npm i yoauth --save
-```
+> `npm i --save yoauth`
 
-### Example
-```env
-# .env
-SESSION_SECRET=(insert your session secret - can be anything)
-MONGO_URI=(insert your personal mongo uri here)
-```
+## Client
+#### Creating a client
+- Import the `Client` constructor from yoauth, then create an instance of it and pass in an object for the client options.
+-   ```js
+    // server.js
+    const { Client } = require('yoauth');
+    const client = new Client(require('./options.js').options); // Options = {...}
 
-```hbs
-<!-- index.hbs -->
+    const express = require('express');
+    const app = express();
 
-Hello, {{user.fullName}}
-<form action="/auth/logout" method="POST">
-    <button type="submit">Logout</button>
-</form>
-```
+    client.configureServer(app);
 
-```js
-// auth.js
-require('dotenv').config();
+    app.get('/', client.ensureAuth, (req, res) => {
+        res.render('dashboard', {user: req.user});
+    });
 
-const {YoAuth} = require('yoauth');
-const mongoose = require('mongoose');
+    app.listen(3000);
+    ```
 
-const auth = new YoAuth({
-    mongoUri: process.env.MONGO_URI,
-    sessionSecret: process.env.SESSION_SECRET,
-    background: 'linear-gradient(115deg, rgba(247,141,145,1) 0%, rgba(66,189,210,1) 100%)',
-    usernameField: 'email',
-    userModel: {
-        name: 'user',
-        schema: new mongoose.Schema({
-            email: String,
-            fullname: String,
-            age: Number,
-            password: String
-        }, {
-            timestamps: true
-        }),
-        args: []
-    },
-    signupCustomFields: [
+#### Client options
+- **mongoUri:** (String) `required`: URI for connecting to MongoDB.
+- **sessionSecret**: (String) `required`: Secret for express session.
+- **path**: (String) `optional`: Router location of login/signup pages/files/routes.
+    - **Default:**
+    - ```js
+      "/auth"
+      ```
+- **background**: (String) `optional`: Background for login/signup pages.
+    - **Default:**
+    - ```js
+      "#F78D91"
+      ```
+- **buttonBackground**: (String) `optional`: Button background for login/signup pages.
+    - **Default:**
+    - ```js
+      "#4664E9"
+      ```
+- **authRedirect**: (String) `optional`: Where the user is redirected when authorized.
+    - **Default:**
+    - ```js
+        "/"
+      ```
+- **loginFile**: (Pathlike String) `optional`: Location of rendered file when logging in.
+    - **Default:**
+    - ```js
+        `${__dirname}/../client/login.hbs` // note: This is relative to node_modules/yoauth/dist/client.ts
+        ```
+- **signupFile**: (Pathlike String) `optional`: Location of rendered file when registering.
+    - **Default:**
+    - ```js
+        `${__dirname}/../client/signup.hbs` // note: This is relative to node_modules/yoauth/dist/client.ts
+        ```
+- **signupCustomFields**: (Array) `optional`: All custom fields that are rendered when registering.
+    - **Default:**
+    - ```js
+        [{
+            label: "Full Name",
+            name: "fullname",
+            type: "string",
+            placeholder: "John Doe"
+        }]```
+- **userModel**: (Object) `optional`: The user model that will be created/searched when authorizing.
+    - **Default:**
+    - ```js
         {
-            label: 'Full Name',
-            name: 'fullname',
-            type: 'string',
-            placeholder: 'John Doe'
-        },
-        {
-            label: 'Age',
-            name: 'age',
-            type: 'number',
-            placeholder: 'Age'
+            name: "user", // name passed to mongo.model(name, Schema, ...args)
+            schema: new mongoose.Schema({
+                email: String,
+                fullname: String,
+                password: String,
+            }, {
+                timestamps: true
+            }), // schema passed to mongo.model(name, Schema, ...args)
+            args: [] // args passed to mongo.model(name, Schema, ...args)
         }
-    ],
-    path: '/auth'
-});
-
-module.exports = auth;
-```
-
-```js
-// index.js
-const express = require('express');
-const app = express();
-
-const auth = require('./auth');
-
-auth.configureServer(app);
-
-app.set('view engine', 'hbs');
-app.get('/', auth.ensureAuth, function(req, res, next) {
-    res.render(`${__dirname}/index.hbs`, {user: req.user});
-});
-
-app.listen(3000, e => {
-    if(e) throw e;
-    console.log('Running on PORT 3000');
-});
-```
-
-You can now visit `http://localhost:3000/auth/signup` to register!
-
------------
-**Licensed under the MIT Open Source license.**
+      ```
+- **mongoOptions**: (Object) `optional`: Options passed to `mongoose.createConnection(uri, options);`
+    - **Default:**
+    - ```js
+      {}
+      ```
+- **signupCallback**: (Function) `optional`: Function executed on POST at `{path}/signup`
+    - **Function Params:**
+        - `req`: express.Request
+        - `res`: express.Response
+        - `options`: Object:
+            - `auth`: yoauth.Client
+    - **Default:** [See src/local/signup.ts](https://github.com/yoauth/yoauth/blob/main/src/auth/local/signup.ts)
+- **loginCallback**: (Function) `optional`: Function executed on POST at `{path}/login`
+    - **Function Params:**
+        - `req`: express.Request
+        - `res`: express.Response
+        - `options`: Object:
+            - `auth`: yoauth.Client
+            - `passport`: passport
+    - **Default:** [See src/local/login.ts](https://github.com/yoauth/yoauth/blob/main/src/auth/local/login.ts)
