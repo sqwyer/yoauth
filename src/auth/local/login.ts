@@ -24,7 +24,7 @@ function login(req: Request, res: Response, options: any) {
             
             res.redirect(auth.options.authRedirect);
         });
-    });
+    })(req, res, options.next);
 }
 
 export { login };
