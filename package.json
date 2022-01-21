@@ -9,7 +9,7 @@
     "yoauth-simply-theme": "^1.3.0"
   },
   "name": "yoauth",
-  "version": "0.4.5",
+  "version": "0.4.6",
   "main": "dist/client.js",
   "scripts": {
     "serve": "nodemon tests/index.js"
@@ -21,7 +21,7 @@
     "hbs"
   ],
   "author": "Sawyer",
-  "repository": "https://github.com/yoauth/yoauth",
+  "repository": "https://github.com/sqwyer/yoauth",
   "license": "MIT",
   "description": "An easy to use authentication system that can easily be built in to your Express + HBS web apps.",
   "dependencies": {
